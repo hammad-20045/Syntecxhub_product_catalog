@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <% layout('layouts/boilerplate') %>
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h1>Product Catalog</h1>
+    <a href="/products/new" class="btn btn-primary">Add New Product</a>
+</div>
+
+<table class="table table-hover">
+    <thead class="table-dark">
+        <tr>
+            <th>Name</th>
+            <th>Category</th>
+            <th>Price</th>
+            <th>Stock</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% for(let product of allProducts) { %>
+        <tr>
+            <td><a href="/products/<%= product._id %>"><%= product.name %></a></td>
+            <td><%= product.category %></td>
+            <td>$<%= product.price %></td>
+            <td><%= product.stock %></td>
+            <td>
+                <a href="/products/<%= product._id %>/edit" class="btn btn-sm btn-info">Edit</a>
+            </td>
+        </tr>
+        <% } %>
+    </tbody>
+</table>
+     
+</body>
+</html> 
+ 

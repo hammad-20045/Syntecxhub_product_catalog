@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Show Product</title>
+</head>
+<body>
+    <% layout('layouts/boilerplate') %>
+<div class="card shadow">
+    <div class="card-body">
+        <h5 class="card-title text-primary"><%= product.name %></h5>
+        <h6 class="card-subtitle mb-2 text-muted">Category: <%= product.category %></h6>
+        <p class="card-text"><%= product.description %></p>
+        <p><strong>Price:</strong> $<%= product.price %></p>
+        <p><strong>Available Stock:</strong> <%= product.stock %></p>
+        
+        <div class="d-flex gap-2">
+            <a href="/products/<%= product._id %>/edit" class="btn btn-warning">Edit Details</a>
+            
+            <form action="/products/<%= product._id %>?_method=DELETE" method="POST">
+                <button class="btn btn-danger">Remove from Catalog</button>
+            </form>
+        </div>
+    </div>
+</div>
+    
+</body>
+</html>
